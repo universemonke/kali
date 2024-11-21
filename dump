@@ -1,0 +1,22 @@
+## NMAP Scan for Vulnerabilities and Services
+nmap -sV -v --script vuln
+
+## Finding Sites of Webservers using dirb
+disb http(s)://URL
+
+## Scanning Server for Wordpress 
+wpscan --url URL/SITE
+
+### Scan with User enumeration
+wpscan --url URL/SITE -e u
+
+### Scan with Password Bruteforce
+wpscan --irl URL/SITE --passwords /path/to/wordlist
+
+## Use Hydra to Bruteforce Web Logins (require Burp)
+In oder to use this, you need Burp and the http post that will be send to the server after trying to login (the Password and Username should be readable in this Part)
+In this part, you simply change the username to ^USER^ and password to ^PASS^. You also need some kind of Indicator, thats been triggered if the login is successful like "redirect".
+Put this at the very end of the http request as followed: "http request ......&Login=Login:redirect"
+
+hydra -l USERNAME -P path/to/wordlist IPADRESS http-form-post "PART FROM BURP&LOGIN=LOGIN:SITESPESIFIC"
+
